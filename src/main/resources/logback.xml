@@ -1,0 +1,38 @@
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">        
+        <encoder>
+            <pattern>%d %-5level [%thread] %logger{0}:%line %X{sourceThread} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+	<!-- This affects logging for both user code and Flink -->
+    <root level="INFO">
+        <appender-ref ref="console"/>
+    </root>
+
+    <!-- Uncomment this if you want to only change Flink's logging -->
+    <logger name="org.apache.flink" level="ERROR">
+        <appender-ref ref="console"/>
+    </logger>
+
+    <!-- The following lines keep the log level of common libraries/connectors on
+         log level INFO. The root logger does not override this. You have to manually
+         change the log levels here. -->
+    <logger name="akka" level="ERROR">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.apache.kafka" level="ERROR">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.apache.hadoop" level="ERROR">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.apache.zookeeper" level="ERROR">
+        <appender-ref ref="console"/>
+    </logger>
+
+    <!-- Suppress the irrelevant (wrong) warnings from the Netty channel handler -->
+    <logger name="org.apache.flink.shaded.akka.org.jboss.netty.channel.DefaultChannelPipeline" level="ERROR">
+        <appender-ref ref="console"/>
+    </logger>
+</configuration>

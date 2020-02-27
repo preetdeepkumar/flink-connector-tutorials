@@ -1,0 +1,31 @@
+# Create the index
+POST http://127.0.0.1:9200/bad-client
+
+# Add the mapping so that Elasticsearch knows the data coming has a geo-point (useful in Kibana)
+PUT http://127.0.0.1:9200/bad-client/_mapping
+
+{
+    "properties": {
+        "ip": {
+            "type": "text",
+            "fields": {
+                "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                }
+            }
+        },
+        "location": {
+            "type": "geo_point"
+        },
+        "timestamp": {
+            "type": "text",
+            "fields": {
+                "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                }
+            }
+        }
+    }
+}

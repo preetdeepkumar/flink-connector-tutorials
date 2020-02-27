@@ -1,0 +1,26 @@
+# read from local file system
+
+input {
+  file {    
+    path => ["/root/apache-logs/access_log_*.log"]           
+  }
+}
+
+filter {
+  grok {
+    match => { "message" => "%{COMBINEDAPACHELOG}" }
+  }
+  
+  geoip {
+    source => "clientip"
+    target => "geoip"
+  }
+}
+
+output {  
+  kafka {
+    codec => json
+    bootstrap_servers => "127.0.0.1:9092"
+    topic_id => "flink-log-test"
+  }
+}
