@@ -16,6 +16,15 @@ I used for testing is copied to src/main/resources/logstash-apache-config.yml.
 * Flink Kafka doc 
 	- https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html#apache-kafka-connector
 
+### Package - org.pd.streaming.connector.kafka.examples
+* It contains 3 simple examples using FlinkKafkaConsumer and FlinkKafkaProducer API
+* NumberGenerator and Producer classes are used to generate numbers every second and send to Kafka Topics
+* KafkaRecord is a wrapper to read both key and value
+* MySchema class implements KafkaDeserializationSchema<KafkaRecord> and creates objects of type KafkaRecord
+* Main1 - Read from Kafka, Define a 5 seconds Tumbling window, Simple reduction and print result to console
+* Main2 - Read from Kafka, Define a 5 seconds Tumbling window, Simple reduction and send result to Kafka Topic
+* Main3 - Read from Kafka, Filter bad values, Define a 5 seconds Tumbling window with allowedLateness, Simple aggregation and send result to Kafka Topic
+
 ### Package - org.pd.streaming.connector.es
 * FlinkElasticSearchDemo is the main class here which uses Flink's Elasticsearch connector to send data to an Elasticsearch
 index.
