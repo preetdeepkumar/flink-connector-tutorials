@@ -26,11 +26,11 @@ I used for testing is copied to src/main/resources/logstash-apache-config.yml.
 * Main3 - Read from Kafka, Filter bad values, Define a 5 seconds Tumbling window with allowedLateness, Simple aggregation and send result to Kafka Topic
 	
 * Kafka topics required to run above example
-- /bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic Topic1-IN
-- /bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic Topic2-IN
-- /bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic Topic3-IN
-- /bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic Topic2-OUT
-- /bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic Topic3-OUT
+	- /bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic Topic1-IN
+	- /bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic Topic2-IN
+	- /bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic Topic3-IN
+	- /bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic Topic2-OUT
+	- /bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic Topic3-OUT
 
 ### Package - org.pd.streaming.connector.es
 * FlinkElasticSearchDemo is the main class here which uses Flink's Elasticsearch connector to send data to an Elasticsearch
